@@ -4,12 +4,9 @@ import subprocess
 
 from scripts.var import src_dir, repo_dir, work_dir
 
-def recreate_xfwm4_assets(flavour):
+def recreate_xfwm4_assets():
     """
-    Recolors xfwm4 assets based on the flavour
-
-    Args:
-        flavour (Flavour): The flavour to recolor
+    Recolors xfwm4 assets
     """
 
     # Delete assets that already exists and copy new assets file
@@ -24,7 +21,7 @@ def recreate_xfwm4_assets(flavour):
                 shutil.rmtree(f"{assets_folder}/{folder}{variant}{size}", ignore_errors=True)
 
 
-            patched_asset = f"{repo_dir}/patches/xfwm4/{folder}-Catppuccin-{flavour}{variant}.svg"
+            patched_asset = f"{repo_dir}/patches/xfwm4/{folder}-Soggy-Wallust-{variant}.svg"
             shutil.copy(patched_asset, f"{assets_folder}/{folder}{variant}.svg")
 
     os.chdir(assets_folder)

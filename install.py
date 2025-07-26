@@ -9,24 +9,25 @@ import argparse
 import os
 import subprocess
 
-from scripts.ctp_colors import ctp_colors, get_all_accent
 from scripts.create_theme import create_theme
 from scripts.var import theme_name, work_dir
 
-parser = argparse.ArgumentParser(description="Catppuccin theme")
-parser.add_argument("flavor",
-                    metavar="theme flavor",
-                    type=str,
-                    nargs="+",
-                    choices=["mocha", "frappe", "macchiato", "latte", "all"],
-                    help="Flavor of the theme to apply. Can be frappe, mocha, macchiato, latte")
+parser = argparse.ArgumentParser(description="Soggy Wallust GTK theme")
 
 parser.add_argument("--name", "-n",
                     metavar="theme name",
                     type=str,
                     default=theme_name,
                     dest="name",
-                    help="Name of the theme to apply. Defaults to Catppuccin")
+                    help="Name of the theme to apply. Defaults to Soggy Wallust")
+
+parser.add_argument("--style", "-s",
+                    metavar="Style of the theme",
+                    type=str,
+                    default="dark",
+                    dest="style",
+                    choices=["dark", "light"],
+                    help="Style variant of the theme. Can be dark or light.")
 
 parser.add_argument("--dest", "-d",
                     metavar="destination",
@@ -34,18 +35,7 @@ parser.add_argument("--dest", "-d",
                     dest="dest",
                     help="Destination of the files. defaults to releases folder inside the root")
 
-parser.add_argument("--accent", "-a",
-                    metavar="Accent of the theme",
-                    type=str,
-                    nargs="+",
-                    default=["blue"],
-                    dest="accent",
-                    choices=["rosewater", "flamingo", "pink", "mauve", "red", "maroon", "peach",
-                             "yellow", "green", "teal", "sky", "sapphire", "blue", "lavender", "all"],
-                    help="Accent of the theme. Can include 'rosewater', 'flamingo', 'pink', 'mauve', 'red', 'maroon', \
-                        'peach', 'yellow', 'green', 'teal', 'sky', 'sapphire', 'blue', 'lavender'")
-
-parser.add_argument("--size", "-s",
+parser.add_argument("--size", "-z",
                     metavar="Size of the theme",
                     type=str,
                     default="standard",
@@ -63,14 +53,14 @@ parser.add_argument("--tweaks",
                     help="Some specifc tweaks. like black, rimless, normal buttons")
 
 parser.add_argument("-l", "--link",
-                    help="Link advaita themes to our catppuccin theme",
+                    help="Link advaita themes to our soggy wallust theme",
                     type=bool,
                     default=False,
                     action=argparse.BooleanOptionalAction,
                     dest="link")
 
 parser.add_argument("--zip",
-                    help="Zip catppuccin theme",
+                    help="Zip soggy wallust theme",
                     type=bool,
                     default=False,
                     action=argparse.BooleanOptionalAction,
@@ -85,16 +75,6 @@ parser.add_argument("--recreate-asset",
 
 args = parser.parse_args()
 
-if "all" in args.flavor:
-    flavors = ctp_colors.keys()
-else:
-    flavors = args.flavor
-
-if "all" in args.accent:
-    accents = get_all_accent().keys()
-else:
-    accents = args.accent
-
 if args.dest:
     dest = args.dest
 elif os.geteuid() == 0: # Sudo
@@ -105,5 +85,4 @@ else:
 if not os.listdir(work_dir):
     subprocess.call("git submodule update --init --recursive", shell=True)
 
-filename = create_theme(flavors, accents, dest,
-                        args.link, args.name, args.size, args.tweaks, args.zip, args.rec_asset)
+filename = create_theme(args.style, dest, args.link, args.name, args.size, args.tweaks, args.zip, args.rec_asset)
