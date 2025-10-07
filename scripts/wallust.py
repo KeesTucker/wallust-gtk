@@ -19,22 +19,22 @@ class WallustBase:
 
 
 class WallustDark(WallustBase):
-    crust      = "000007"
-    mantle     = "000009"
-    base       = "00000B"
-    surface0   = "33333C"
-    surface1   = "66666D"
-    surface2   = "8C8C91"
+    crust      = "141017"
+    mantle     = "1B161F"
+    base       = "221B27"
+    surface0   = "4E4952"
+    surface1   = "7A767D"
+    surface2   = "9C989E"
 
-    text       = "E5E4DD"
-    subtext1   = "C3C2BC"
-    subtext0   = "A0A09B"
-    overlay2   = "676763"
-    overlay1   = "393937"
-    overlay0   = "222221"
+    text       = "F4EFFA"
+    subtext1   = "CFCBD5"
+    subtext0   = "ABA7AF"
+    overlay2   = "6E6C70"
+    overlay1   = "3D3C3F"
+    overlay0   = "252425"
 
-    accent     = "547C94"
-    accent1     = "9DA2B6"
+    accent     = "9372B5"
+    accent1     = "7E89B4"
 
     red        = "fd5f51"
     green      = "38c76a"
@@ -43,22 +43,22 @@ class WallustDark(WallustBase):
 
 
 class WallustLight(WallustBase):
-    crust      = "898985"
-    mantle     = "B7B6B1"
-    base       = "E5E4DD"
-    surface0   = "EAE9E4"
-    surface1   = "EFEFEB"
-    surface2   = "F3F3F0"
+    crust      = "928F96"
+    mantle     = "C3BFC8"
+    base       = "F4EFFA"
+    surface0   = "F6F2FB"
+    surface1   = "F8F5FC"
+    surface2   = "FAF8FD"
 
-    text       = "00000B"
-    subtext1   = "000009"
-    subtext0   = "000008"
-    overlay2   = "000005"
-    overlay1   = "000003"
-    overlay0   = "000002"
+    text       = "221B27"
+    subtext1   = "1D1721"
+    subtext0   = "18131B"
+    overlay2   = "0F0C12"
+    overlay1   = "08070A"
+    overlay0   = "050406"
 
-    accent     = "5A7585"
-    accent1     = "767A88"
+    accent     = "7D6497"
+    accent1     = "8389A2"
 
     red        = "fd5f51"
     green      = "38c76a"
